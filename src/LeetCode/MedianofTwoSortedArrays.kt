@@ -1,7 +1,9 @@
 package LeetCode
 
 fun main(){
-
+    val arr1 = arrayOf(1,3).toIntArray()
+    val arr2 = arrayOf(2).toIntArray()
+    print(findMedianSortedArrays(arr1,arr2))
 }
 
 fun findMedianSortedArrays(nums1: IntArray, nums2:IntArray):Double{
@@ -17,7 +19,7 @@ fun findMedianSortedArrays(nums1: IntArray, nums2:IntArray):Double{
 
         var tmp = m
         m = n
-        n = m
+        n = tmp
     }
 
     var iMin = 0
@@ -34,8 +36,9 @@ fun findMedianSortedArrays(nums1: IntArray, nums2:IntArray):Double{
             }else {
                 var maxLeft = 0
                 if(i==0){maxLeft = b[j-1]}
-                else if(j==0){maxLeft = a[i-1]}
+                else if(j ==0){maxLeft = a[i-1]}
                 else {maxLeft = Math.max(a[i-1],b[j-1])}
+
                 if((m+n)%2 == 1) {return maxLeft.toDouble()}
 
                 var minRight = 0
