@@ -1,5 +1,27 @@
 package uvaonline
-
+/*
+Your task is to write a program that can decide whether you can find an arithmetic expression consisting
+of five given numbers ai (1 ≤ i ≤ 5) that will yield the value 23.
+For this problem we will only consider arithmetic expressions of the following from:
+(((aπ(1) o1 aπ(2)) o2 aπ(3)) o3 aπ(4)) o4 aπ(5)
+where π : {1, 2, 3, 4, 5} → {1, 2, 3, 4, 5} is a bijective function and oi ∈ {+, −, ∗}(1 ≤ i ≤ 4)
+Input
+The Input consists of 5-Tupels of positive Integers, each between 1 and 50.
+Input is terminated by a line containing five zero’s. This line should not be processed. Input file
+will have no more than 25 lines.
+Output
+For each 5-Tupel print ‘Possible’ (without quotes) if their exists an arithmetic expression (as described
+above) that yields 23. Otherwise print ‘Impossible’.
+Sample Input
+1 1 1 1 1
+1 2 3 4 5
+2 3 5 7 11
+0 0 0 0 0
+Sample Output
+Impossible
+Possible
+Possible
+ */
 import java.util.*
 
 fun main(){
