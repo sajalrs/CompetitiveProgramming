@@ -4,48 +4,47 @@ import java.util.Arrays;
 
 public class QuickSort {
 
-    static int[] arr;
-
-    public static int partition(int left, int right){
-        int pivot = arr[right];
-        int origRight = right;
-        right--;
-        while(true){
-            while(left < arr.length-1 && arr[left] < pivot ){
-                left++;
-            }
-
-            while(right > 0 && arr[right] > pivot){
-                right--;
-            }
-
-            if(left >= right){
-                break;
-            }
-
-            int temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
-        }
-
-        int temp = arr[left];
-        arr[left] = arr[origRight];
-        arr[origRight] = temp;
-        return left;
-    }
-
-    public static int[] quickSort(int[] array){
-        arr = array;
-        quickSort(0, arr.length-1);
+    public static int[] quickSort(int[] arr){
+        quickSort(arr, 0, arr.length-1);
         return arr;
     }
 
-    static void quickSort(int left, int right){
-        if(left <= right){
-            int partition = partition(left, right);
-            quickSort(left, partition-1);
-            quickSort(partition+1, right);
+    static int partition (int[] arr, int low, int high){
+        int pivot = arr[high];
+        int origRight = high;
+        high--;
+
+        while(true){
+            while(low< arr.length -1 && arr[low] < pivot){
+                low++;
+            }
+
+            while(high>0 && arr[high] > pivot){
+                high--;
+            }
+
+            if(low >= high){
+                break;
+            }
+
+            int temp = arr[low];
+            arr[low] = arr[high];
+            arr[high] = temp;
         }
+
+        int temp = arr[origRight];
+        arr[origRight] = arr[low];
+        arr[low] = temp;
+        return low;
+    }
+
+    static void quickSort(int arr[], int low, int high){
+        if(low<=high){
+            int pivot = partition(arr, low, high);
+            quickSort(arr, pivot+1, high);
+            quickSort(arr, low, pivot-1);
+        }
+
     }
 
     public static void main(String[] args) {
