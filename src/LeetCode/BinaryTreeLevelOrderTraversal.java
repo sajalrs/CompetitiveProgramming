@@ -1,12 +1,12 @@
 package LeetCode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTreeLevelOrderTraversal {
-    static List<Integer> binTreeArray = new ArrayList<>();
-    static int counter = 0;
-    public static class TreeNode {
+    public class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -25,32 +25,30 @@ public class BinaryTreeLevelOrderTraversal {
         }
     }
 
-//    public static List<List<Integer>> levelOrder(TreeNode root) {
-//        preOrderTraversal(root);
-//
-//
-//
-//    }
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> levels = new ArrayList<List<Integer>>();
+        if(root == null) return levels;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        int level = 0;
+        while (!queue.isEmpty()){
+            levels.add(new ArrayList<Integer>());
+            int levelLength = queue.size();
+            for(int i=0; i< levelLength; i++){
+                TreeNode node = queue.poll();
+                levels.get(level).add(node.val);
 
-    public static void preOrderTraversal(TreeNode curNode) {
-        counter++;
-        if (curNode != null) {
-            binTreeArray.add(curNode.val);
-            preOrderTraversal(curNode.left);
-            preOrderTraversal(curNode.right);
+                if(node.left !=null ){
+                    queue.add(node.left);
+                }
+
+                if(node.right !=null){
+                    queue.add(node.right);
+                }
+            }
+            level++;
         }
-
+        return levels;
     }
-
-    public static void main(String[] args) {
-        TreeNode root1 = new TreeNode(2);
-        root1.left = new TreeNode(1);
-        root1.right = new TreeNode(3);
-        root1.right.right = new TreeNode(3);
-        preOrderTraversal(root1);
-
-        System.out.println(Math.log(binTreeArray.size()+1)/Math.log(2) -1);
-    }
-
 
 }
