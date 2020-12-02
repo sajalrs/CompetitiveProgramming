@@ -17,6 +17,9 @@ public class MostCompetitiveSubsequence {
 
     static void generateSubsequences(int[] nums, int[] curArray, int i, int j, int k){
         if(j < k && i < nums.length){
+            if (j + (nums.length - i) < k) {
+                return;
+            }
             generateSubsequences(nums, curArray, i+1,j, k);
             curArray[j] = nums[i];
             generateSubsequences(nums, curArray.clone(), i+1, j+1, k);
