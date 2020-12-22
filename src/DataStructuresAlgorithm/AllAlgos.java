@@ -9,7 +9,7 @@ public class AllAlgos {
 
     static class TreeNode {
         int val;
-       TreeNode left;
+        TreeNode left;
         TreeNode right;
 
         TreeNode() {
@@ -19,7 +19,7 @@ public class AllAlgos {
             this.val = val;
         }
 
-        TreeNode(int val,TreeNode left,TreeNode right) {
+        TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
             this.right = right;
@@ -27,70 +27,70 @@ public class AllAlgos {
     }
 
     static int[] insertionSort(int[] arr) {
-        for(int i=1; i< arr.length; i++){
+        for (int i = 1; i < arr.length; i++) {
             int j = i;
-            while(j> 0 && arr[j-1] > arr[j]){
+            while (j > 0 && arr[j - 1] > arr[j]) {
                 int temp = arr[j];
-                arr[j] = arr[j-1];
-                arr[j-1] = temp;
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
                 j--;
             }
         }
         return arr;
     }
 
-    static int[] bubbleSort(int[] arr){
-        for(int i=0; i<arr.length-1; i++){
-            for(int j=0; j<arr.length-i-1; j++){
-                if(arr[j+1] <arr[j]){
+    static int[] bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i; j < arr.length - i - 1; j++) {
+                if (arr[j + 1] < arr[j]) {
                     int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
         return arr;
     }
 
-    static int[] selectionSort(int[] arr){
-        for(int i=0; i<arr.length-1; i++){
+    static int[] selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
             int min = i;
-            for(int j=i;j<arr.length;j++){
-                if(arr[min] > arr[j]){
+            for (int j = i; j < arr.length; j++) {
+                if (arr[j] < arr[min]) {
                     min = j;
                 }
             }
-            if(min != i){
+            if (min != i) {
                 int temp = arr[min];
                 arr[min] = arr[i];
-                arr[i] = arr[min];
+                arr[i] = temp;
             }
         }
         return arr;
     }
 
-    static int partition(int[] arr, int l, int r){
+    static int partiotion(int[] arr, int l, int r) {
         int pivot = arr[r];
         int origRight = r;
         r--;
-        while(true){
 
-            while(l<arr.length-1 && arr[l] < pivot){
+        while (true) {
+
+            while (l < arr.length - 1 && arr[l] < pivot) {
                 l++;
             }
 
-            while(r>0 && arr[r] > pivot){
+            while (r > 0 && arr[r] > pivot) {
                 r--;
             }
 
-            if(l>=r){
+            if (l >= r) {
                 break;
             }
 
             int temp = arr[l];
             arr[l] = arr[r];
             arr[r] = temp;
-
         }
 
         int temp = arr[origRight];
@@ -100,37 +100,37 @@ public class AllAlgos {
         return l;
     }
 
-    static void quickSort(int[] arr, int l, int r){
-        if(l<=r){
-            int pivot = partition(arr, l, r);
-            quickSort(arr, l, pivot-1);
-            quickSort(arr, pivot+1,r);
+    static void quickSort(int[] arr, int l, int r) {
+        if (l <= r) {
+            int pivot = partiotion(arr, l, r);
+            quickSort(arr, 0, pivot - 1);
+            quickSort(arr, pivot + 1, r);
         }
     }
 
-    static int[] quickSort(int[] arr){
-        quickSort(arr, 0, arr.length-1);
+    static int[] quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
         return arr;
     }
 
-    static void merge(int[] arr, int l, int m, int r){
-        int n1 = m - l +1;
-        int n2 = r-m;
+    static void merge(int[] arr, int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
 
         int[] L = new int[n1];
         int[] R = new int[n2];
 
-        for(int i=0; i<n1; i++){
-            L[i] = arr[l+i];
+        for (int i = 0; i < n1; i++) {
+            L[i] = arr[l + i];
         }
 
-        for(int j=0; j<n2; j++){
-            R[j] = arr[m+1+j];
+        for (int j = 0; j < n2; j++) {
+            R[j] = arr[m + j + 1];
         }
 
-        int i =0;
-        int j=0;
-        int k=l;
+        int i = 0;
+        int j = 0;
+        int k = l;
 
         while(i<n1 && j<n2){
             if(L[i] < R[j]){
@@ -158,10 +158,10 @@ public class AllAlgos {
 
     static void mergeSort(int[] arr, int l, int r){
         if(l<r){
-            int mid = (l+r)/2;
-            mergeSort(arr, l, mid);
-            mergeSort(arr, mid+1,r);
-            merge(arr, l,mid,r);
+            int m = (l+r)/2;
+            mergeSort(arr, l, m);
+            mergeSort(arr, m+1, r);
+            merge(arr, l, m, r);
         }
     }
 
@@ -183,7 +183,6 @@ public class AllAlgos {
             }
 
             return binarySearch(arr, mid+1, r, x);
-
         }
         return -1;
     }
@@ -196,21 +195,20 @@ public class AllAlgos {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
         int level = 0;
-        while (!queue.isEmpty()){
+        while(!queue.isEmpty()){
             int levelLength = queue.size();
             System.out.printf("Level %d%n", level);
             for(int i=0; i<levelLength;i++){
-                TreeNode tempNode = queue.poll();
-                System.out.print(tempNode.val + " ");
-                if(tempNode.left != null){
-                    queue.add(tempNode.left);
+                TreeNode curNode = queue.poll();
+                System.out.println(curNode.val);
+                if(curNode.left != null){
+                    queue.add(curNode.left);
                 }
 
-                if(tempNode.right != null){
-                    queue.add(tempNode.right);
+                if(curNode.right != null){
+                    queue.add(curNode.right);
                 }
             }
-            System.out.println();
             level++;
         }
     }
