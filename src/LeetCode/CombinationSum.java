@@ -11,11 +11,14 @@ public class CombinationSum {
         return combinations;
     }
 
-    public void combinationSumHelper(int[] candidates, int target, int curSum, int i, List<List<Integer>> combinations, List<Integer> curCombination) {
+    private void combinationSumHelper(int[] candidates, int target, int curSum, int i, List<List<Integer>> combinations, List<Integer> curCombination) {
         if (curSum > target || i >= candidates.length) {
             return;
         } else if (curSum == target) {
-            combinations.add(curCombination);
+            if(!combinations.contains(curCombination)){
+                combinations.add(curCombination);
+            }
+
         } else {
             combinationSumHelper(candidates, target, curSum, i + 1, combinations, new ArrayList<>(curCombination));
             curCombination.add(candidates[i]);
