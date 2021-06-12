@@ -7,9 +7,6 @@ package LeetCode
  * Definition for singly-linked list.
  */
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-}
 
 fun swapPairs(orig: ListNode?): ListNode? {
     var head = orig
