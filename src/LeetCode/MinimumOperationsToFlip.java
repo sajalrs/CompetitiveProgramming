@@ -3,7 +3,7 @@ package LeetCode;
 import java.util.Stack;
 
 public class MinimumOperationsToFlip {
-    int pos = 0;
+    int pos;
     private class TreeNode{
         public TreeNode leftNode;
         public TreeNode rightNode;
@@ -15,9 +15,10 @@ public class MinimumOperationsToFlip {
     }
 
     public int minOperationsToFlip(String expression) {
-
+        pos = 0;
         Stack<TreeNode> root = new Stack<>();
         readExpression(root, expression);
+
         int res[] = dfs(root.pop());
         return Math.max(res[0], res[1]);
     }
@@ -48,6 +49,7 @@ public class MinimumOperationsToFlip {
 
 
     public void readExpression(Stack<TreeNode> stack, String expression){
+
         if(pos == expression.length())
             return;
 
@@ -72,15 +74,17 @@ public class MinimumOperationsToFlip {
         }else if(curChar == ')'){
             return;
         } else {
-          TreeNode node = new TreeNode(curChar);
-          node.leftNode = stack.pop();
-          stack.push(node);
+            TreeNode node = new TreeNode(curChar);
+            node.leftNode = stack.pop();
+            stack.push(node);
 
-          readExpression(stack, expression);
+            readExpression(stack, expression);
         }
 
 
 
+
     }
+
 
 }
