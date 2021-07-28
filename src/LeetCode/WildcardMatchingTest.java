@@ -50,4 +50,11 @@ public class WildcardMatchingTest {
     public void test6(){
         assertEquals(true, wildcardMatching.isMatch("", "******"));
     }
+
+    @Test
+    @DisplayName("s = \"adceb\", p = \"*a*b\"")
+    public void test7(){
+        assertEquals(true, wildcardMatching.isMatch("aa", "a*"));
+    }
+
 }
