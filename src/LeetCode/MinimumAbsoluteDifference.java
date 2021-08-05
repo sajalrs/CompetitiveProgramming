@@ -13,15 +13,12 @@ public class MinimumAbsoluteDifference {
         mergeSort(arr, 0, arr.length-1);
 
         List<List<Integer>> listWithMinAbsDiff = new ArrayList<>();
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i<arr.length; i++){
-            map.put(arr[i] + minDif, arr[i]);
-        }
 
-        for(int i = 0; i<arr.length; i++){
-           if(map.containsKey(arr[i])){
+
+        for(int i = 1; i<arr.length; i++){
+           if(arr[i] - arr[i-1] == minDif){
                List<Integer> numsWithDif = new ArrayList<>();
-               numsWithDif.add(map.get(arr[i]));
+               numsWithDif.add(arr[i-1]);
                numsWithDif.add(arr[i]);
                listWithMinAbsDiff.add(numsWithDif);
            }
