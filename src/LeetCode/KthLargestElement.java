@@ -1,7 +1,5 @@
 package LeetCode;
 
-import java.util.Arrays;
-
 public class KthLargestElement {
     public int findKthLargest(int[] nums, int k) {
         mergeSort(0, nums.length-1, nums);
