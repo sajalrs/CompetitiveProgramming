@@ -4,6 +4,33 @@ import java.util.*;
 
 public class MostPoints {
     public long mostPoints(int[][] questions) {
+
+        Map<Integer, Long> pointsSoFar = new HashMap<>();
+        for(int i=0; i<questions.length; i++){
+            pointsSoFar.put(i, 0l);
+        }
+
+        for(int i = 0; i<questions.length; i++){
+            int nextQuestion = i + questions[i][1] + 1;
+            if(pointsSoFar.containsKey(nextQuestion)){
+                pointsSoFar.put(nextQuestion, Math.max(pointsSoFar.get(nextQuestion), pointsSoFar.get(i)+questions[i][0]));
+            }else {
+                pointsSoFar.put(nextQuestion, pointsSoFar.get(i)+questions[i][0]);
+            }
+        }
+
+        for(int i=0; i<questions.length; i++){
+            pointsSoFar.put(i, pointsSoFar.get(i)+questions[i][0]);
+        }
+
+        long max = 0l;
+        for(int i=0; i<questions.length; i++){
+            max = Math.max(max, pointsSoFar.get(i));
+        }
+        return max;
+    }
+
+    public long mostPointsDFS(int[][] questions) {
         Map<Integer, Map<Integer, Integer>> graph = new HashMap<>();
         for(int i =0; i<questions.length; i++){
             if(!graph.containsKey(i)){
