@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class IntervalsBetweenIdenticalElements {
+public class IntervalsBetweenIdenticalElements2 {
     public long[] getDistances(int[] arr) {
 
         Map<Integer, List<Integer>> numbersAtPos = new HashMap<>();
