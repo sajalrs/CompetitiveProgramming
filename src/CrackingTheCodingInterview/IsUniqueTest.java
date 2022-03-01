@@ -28,6 +28,12 @@ public class IsUniqueTest {
     }
 
     @Test
+    @DisplayName("Test Empty String Inplace N")
+    public void testEmptyInplaceN(){
+        assertEquals(true, isUnique.isUniqueInPlaceN(""), "Empty String should be unique");
+    }
+
+    @Test
     @DisplayName("Test Space")
     public void testSpace(){
         assertEquals(true, isUnique.isUnique(" "), "Just space should be unique");

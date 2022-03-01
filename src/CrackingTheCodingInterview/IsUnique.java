@@ -29,6 +29,18 @@ public class IsUnique {
         return true;
     }
 
+    public boolean isUniqueInPlaceN(String str){
+        if(str.length() > 128) return false;
+        boolean[] usedAlready = new boolean[128];
+
+        for(int i=0; i< str.length();i++){
+            int val = str.charAt(i);
+            if(usedAlready[val]) return false;
+            usedAlready[val] = true;
+        }
+        return true;
+    }
+
 
 
     public static void main(String[] args){}
