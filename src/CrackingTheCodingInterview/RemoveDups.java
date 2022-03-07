@@ -21,19 +21,18 @@ public class RemoveDups {
     }
 
     public void removeDupsNoBuffer(ListNode head){
-        ListNode cur = head.next;
-        while (cur != null){
-            ListNode newPointer = cur.next;
+        while (head != null){
             ListNode prev = head;
-            while (newPointer != null){
-                if(newPointer.val == cur.val){
-                    prev.next = newPointer.next;
-                }else {
-                    prev = newPointer;
+            ListNode check = head;
+            ListNode cur = head.next;
+            while (cur!=null){
+                if(check.val == cur.val){
+                    prev.next = cur.next;
                 }
-                newPointer = newPointer.next;
+                prev = cur;
+                cur = cur.next;
             }
-            cur = cur.next;
+            head = head.next;
         }
     }
 
