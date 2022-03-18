@@ -1,2 +1,4 @@
-package CrackingTheCodingInterview.AnimalShelter;public class Cat {
+package CrackingTheCodingInterview.AnimalShelter;
+
+public class Cat extends Animal{
 }

@@ -1,11 +1,11 @@
-package CrackingTheCodingInterview;
+package CrackingTheCodingInterview.AnimalShelter;
 
 public interface AnimalShelterQueue {
-    void enqueue(AnimalShelter.Animal animal);
+    void enqueue(Animal animal);
 
-    AnimalShelter.Animal dequeueAny();
+    Animal dequeueAny();
 
-    AnimalShelter.Dog dequeueDog();
+    Dog dequeueDog();
 
-    AnimalShelter.Cat dequeueCat();
+    Cat dequeueCat();
 }

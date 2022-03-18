@@ -1,2 +1,4 @@
-package CrackingTheCodingInterview.AnimalShelter;public class Animal {
+package CrackingTheCodingInterview.AnimalShelter;
+
+public class Animal {
 }
